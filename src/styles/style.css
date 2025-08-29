@@ -1,0 +1,50 @@
+@media (max-width: 767px) {
+    .coming{
+        font-size: 170% !important;
+        padding: 30px 30px 20px 30px !important;
+    }
+
+    .description {
+        font-size: 85% !important;
+    }
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: #272f44;
+    color: white;
+    font-family: "Nunito", sans-serif;
+}
+
+.container{
+    margin-top: 200px;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;align-items: center;
+}
+
+.logo{
+    border-radius: 100px;
+}
+
+.logo img{
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+}
+
+.coming{
+    font-size: 340%;
+    font-weight: bold;
+    padding: 30px 100px 20px 100px;
+    border-bottom: 3px white solid;
+}
+
+.description {
+    text-align: center;
+    font-size: 191%;
+    font-weight: bold;
+    padding-top: 20px;
+}
