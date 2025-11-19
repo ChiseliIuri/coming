@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>NXFAB</title>
+    <!--    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=WDXL+Lubrifont+SC&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var sync1 = $("#sync1");
+            // var sync2 = $("#sync2");
+            var slidesPerPage = 4; //globaly define number of elements per page
+            var syncedSecondary = true;
+
+            sync1.owlCarousel({
+                items : 1,
+                slideSpeed : 2000,
+                nav: true,
+                autoplay: true,
+                dots: true,
+                loop: true,
+                responsiveRefreshRate : 200,
+                navText: ['<svg width="100%" height="100%" viewBox="0 0 11 20"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M9.554,1.001l-8.607,8.607l8.607,8.606"/></svg>','<svg width="100%" height="100%" viewBox="0 0 11 20" version="1.1"><path style="fill:none;stroke-width: 1px;stroke: #000;" d="M1.054,18.214l8.606,-8.606l-8.606,-8.607"/></svg>'],
+            }).on('changed.owl.carousel', syncPosition);
+
+            function syncPosition(el) {
+                //if you set loop to false, you have to restore this next line
+                //var current = el.item.index;
+
+                //if you disable loop you have to comment this block
+                var count = el.item.count-1;
+                var current = Math.round(el.item.index - (el.item.count/2) - .5);
+
+                if(current < 0) {
+                    current = count;
+                }
+                if(current > count) {
+                    current = 0;
+                }
+            }
+
+            function syncPosition2(el) {
+                if(syncedSecondary) {
+                    var number = el.item.index;
+                    sync1.data('owl.carousel').to(number, 100, true);
+                }
+            }
+
+        });
+    </script>
+    <style>
+        @media screen and (max-width: 750px) {
+            #main_logo{
+                margin-left: 10px !important;
+            }
+
+            #address{
+                margin-right: 10px !important;
+            }
+
+            .top_list img{
+                height: 40px !important;
+                width: 34px !important;
+            }
+
+            .top_list_text{
+                font-size: 10px !important;
+            }
+        }
+        body{
+            font-family: "Sansation", sans-serif;
+            font-optical-sizing: auto;
+            /*font-weight: <weight>;*/
+            font-style: normal;
+            margin: 0;
+        }
+        #sync1 .item {
+            /*margin: 5px;*/
+            color: #fff;
+            border-radius: 3px;
+            text-align: center;
+        }
+        .owl-theme .owl-nav {
+            /*default owl-theme theme reset .disabled:hover links */
+        }
+        .owl-theme .owl-nav [class*="owl-"] {
+            transition: all 0.3s ease;
+        }
+        .owl-theme .owl-nav [class*="owl-"].disabled:hover {
+            background-color: #d6d6d6;
+        }
+        #sync1.owl-theme {
+            position: relative;
+        }
+        #sync1.owl-theme .owl-next,
+        #sync1.owl-theme .owl-prev {
+            width: 22px;
+            height: 40px;
+            margin-top: -20px;
+            position: absolute;
+            top: 50%;
+        }
+        #sync1.owl-theme .owl-prev {
+            left: 10px;
+        }
+        #sync1.owl-theme .owl-next {
+            right: 10px;
+        }
+        .carousel_background{
+            height: 500px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .top_list{
+            display: flex;
+            flex-direction: row;
+        }
+
+        .top_list img{
+            width: 80px;
+            height: 67px;
+        }
+
+
+        .go_to_the_right{
+            margin-left: auto;  /* Магия! */
+            margin-right: 0;   /* Сбрасываем правый отступ для крайнего элемента */
+        }
+
+        a{
+            all: unset
+        }
+
+        p {
+            all: unset
+        }
+
+        a:hover {
+            color: #1D546C;
+            cursor: pointer;
+        }
+        .container{
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .categories_general_title{
+            margin: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 60%;
+            color: #000057;
+        }
+
+        .categories_title{
+            margin: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 60%;
+            color: #000057;
+        }
+
+        .categories_title:hover{
+            cursor: pointer;
+            font-weight: bold;
+            color: #771919;
+            border-bottom: 3px solid #771919;
+         }
+        .categories{
+            min-height: 25px;
+            flex-wrap: wrap;
+            max-width: 60%;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .products{
+            max-width: 60%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .product_card{
+            background-color: #F9F9F9;
+            border-radius: 10px;
+            width: 160px;
+            height: 270px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            margin: 10px 10px;
+        }
+
+        .product_card:hover{
+            cursor: pointer;
+        }
+
+        .product_img{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /*height: 100px;*/
+        }
+
+        .product_img img{
+            height: 120px;
+            width: 120px;
+            object-fit: cover;
+            padding: 10px;
+        }
+
+        .product_title{
+            text-align: center;
+            padding-top: 30px;
+            width: 160px;
+            border-top: 1px solid #a1a1a1  ;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .footer {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .copyright {
+            display: flex;
+            flex-direction: row;
+            max-width: 60%;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 50px;
+        }
+
+        .follow_us{
+            width: 100%;
+            /*height: 200px;*/
+            /*background-color: #000057;*/
+            background-color: #0C2B4E;
+            font-family: "Fugaz One", sans-serif;
+            color: white;
+            font-size: 600%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .follow_links{
+            margin-left: 50px;
+        }
+
+        .carousel_text{
+            font-family: "Fugaz One", sans-serif;
+            font-size: 50px;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            border-radius: 20px;
+            padding: 10px;
+            /*background-color: white;*/
+            color: white;
+            z-index: 20;
+            text-align: left;
+            text-shadow: 0 0 10px #0C2B4E;
+        }
+
+        #top_bar{
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            /*background-color: #313647;*/
+            background-color: #0C2B4E;
+            color: white;
+            height: 90px;
+        }
+
+        /*.filter-green{*/
+        /*    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);*/
+        /*}*/
+
+        #main_logo{
+            margin-left: 10%;
+        }
+
+        #address{
+            margin-right: 12%;
+        }
+
+        .top_list_text{
+            font-size: 20px;
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+<div id="top_bar">
+    <div class="top_list">
+        <div id="main_logo"><img style="padding-top: 10px;" src="./logo_without_back.png" alt="logo"></div>
+        <div class="top_list_text"><h1 style="margin-right: 60px;margin-left: 25px"><a href="#">ABOUT US</a></h1></div>
+        <div class="top_list_text"><h1 style="margin-right: 60px"><a href="#">OUR WORKS</a></h1></div>
+        <div id="address" class="go_to_the_right top_list_text" style=""><h1 style="margin: 20px"><a href="#">ADDRESS</a></h1></div>
+    </div>
+</div>
+<div id="sync1" class="owl-carousel owl-theme">
+    <div class="item">
+        <div class="carousel_text">
+            NXFAB - PROFESSIONAL CAR<br/>TUNING FROM A TO Z
+        </div>
+        <img class="carousel_background" src="./1.jpg" alt="">
+    </div>
+    <div class="item">
+        <div class="carousel_text">
+            NXFAB - PROFESSIONAL CAR<br/>TUNING FROM A TO Z
+        </div>
+        <div class="item">
+            <img class="carousel_background" src="./2.jpg" alt="">
+        </div>
+    </div>
+    <div class="item">
+        <div class="carousel_text">
+            NXFAB - PROFESSIONAL CAR<br/>TUNING FROM A TO Z
+        </div>
+        <div class="item">
+            <img class="carousel_background" src="./3.jpg" alt="">
+        </div>
+    </div>
+    <div class="item">
+        <div class="carousel_text">
+            NXFAB - PROFESSIONAL CAR<br/>TUNING FROM A TO Z
+        </div>
+        <div class="item">
+            <img class="carousel_background" src="./4.jpg" alt="">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="categories_general_title">
+        <h2 style="letter-spacing: 10px;color: #cccccc;font-weight: normal;font-size: 20px;">PRODUCT CATEGORIES</h2>
+        <h1 style="color: black; font-size: 36px; font-weight: bold;">ALL CATEGORIES AT A GLANCE</h1>
+    </div>
+    <div class="categories">
+        <div class="categories_title">ENGINE BLOCK</div>
+        <div class="categories_title">TURBOCHARGER</div>
+        <div class="categories_title">CYLINDER HEAD</div>
+        <div class="categories_title">COOLING</div>
+        <div class="categories_title">EXHAUST SYSTEM</div>
+        <div class="categories_title">DRIVETRAIN</div>
+    </div>
+    <div class="products">
+
+        <div id="prod_1" class="product_card">
+            <div class="product_img"><img src="./motor.webp" alt="engine"></div>
+            <div class="product_title">Race Engines</div>
+        </div>
+        <div id="prod_2" class="product_card">
+            <div class="product_img"><img src="./bloc.webp" alt="billet"></div>
+            <div class="product_title">Billet engine block</div>
+        </div>
+        <div id="prod_3" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+        <div id="prod_4" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+        <div id="prod_5" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+        <div id="prod_6" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+        <div id="prod_7" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+        <div id="prod_8" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+        <div id="prod_9" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+        <div id="prod_10" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+        <div id="prod_11" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+        <div id="prod_12" class="product_card">
+            <div class="product_img"></div>
+            <div class="product_title"></div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="follow_us">
+        <p>FOLLOW US</p>
+        <div class="follow_links">
+            <a href="www.facebook.com">
+                <img src="./facebook.svg" alt="facebook"  width="50" height="50">
+            </a>
+            <a href="www.instagram.com">
+                <img src="./instagram.svg" alt="instagram"  width="50" height="50">
+            </a>
+
+        </div>
+    </div>
+    <div class="copyright">
+        <p>©</p>&nbsp<p id="year"></p>&nbsp<p>NXFAB®</p>
+    </div>
+    <script type="text/javascript">
+        let el = document.getElementById("year");
+        let year = new Date().getFullYear();
+        el.innerText = " " + year + " ";
+    </script>
+</div>
+</body>
+</html>
